@@ -48,7 +48,7 @@ Start the application:
 npm start
 ```
 
-The server will start running on http://localhost:3000. Open your web browser and navigate to this address to start using the Anki Vocab Generator.
+The server will start running on http://localhost:3000. Open your web browser and navigate to this address to start using the Anki Vocab Generator. Make sure to have the Anki app open when creating the vocabulary lists.
 
 Notes:
 
