@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Anki Vocab Generator</title>
+        <link rel="stylesheet" href="output.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="dark bg-stone-800 text-white font-sans">
+        <div class="container mx-auto px-4">
+            <header class="px-4 py-4 bg-stone-800 flex items-center">
+                <h1 class="text-3xl font-bold text-left flex items-center">Anki Vocab Generator</h1>
+                <!-- Classic Dot Spinner -->
+                <div id="loadingSpinner" class="hidden ml-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <style>
+                      .spinner_qM83 {
+                        animation: spinner_8HQG 1.05s infinite;
+                        fill: white; /* Ensure spinner dots are white */
+                      }
+                      .spinner_oXPr {
+                        animation-delay: .1s;
+                      }
+                      .spinner_ZTLf {
+                        animation-delay: .2s;
+                      }
+                      @keyframes spinner_8HQG {
+                        0%, 57.14% {
+                          animation-timing-function: cubic-bezier(0.33, .66, .66, 1);
+                          transform: translate(0);
+                        }
+                        28.57% {
+                          animation-timing-function: cubic-bezier(0.33, 0, .66, .33);
+                          transform: translateY(-6px);
+                        }
+                        100% {
+                          transform: translate(0);
+                        }
+                      }
+                    </style>
+                    <circle class="spinner_qM83" cx="4" cy="12" r="3"/>
+                    <circle class="spinner_qM83 spinner_oXPr" cx="12" cy="12" r="3"/>
+                    <circle class="spinner_qM83 spinner_ZTLf" cx="20" cy="12" r="3"/>
+                  </svg>
+                </div>
+            </header>
+
+            <div class="flex h-screen">
+
+                <section class="setup-section w-1/2 p-4">
+                    <!-- Setup section -->
+                      <form id="vocabularyForm" class="w-3/4">
+                          <div class="mb-2">
+                              <h2 class="text-xl font-bold text-left"> Set up</h2>
+                          </div>
+                        <div class="mb-4">
+                          <label for="language" class="block text-sm font-medium text-left">Language:</label>
+                          <input type="text" id="language" name="language" required class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-500 focus:bg-gray-600 focus:ring-0">
+                        </div>
+                        <div class="mb-4">
+                          <label for="topic" class="block text-sm font-medium text-left">Topic:</label>
+                          <input type="text" id="topic" name="topic" required class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-500 focus:bg-gray-600 focus:ring-0">
+                        </div>
+                        <button type="submit" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 flex rounded text-white focus:outline-none">Generate ✨
+                        </button>
+                      </form>
+                </section>
+
+                <section class="results-section w-1/2 p-4">
+                      <div id="resultsHeader" style="display:none;">
+                          <h2 class="text-xl font-bold text-left mb-2"> Results</h2>
+                      </div>
+                      <ul id="vocabularyList" class="list-none text-left"></ul>
+                      <button id="addToAnkiButton" class="mt-4 px-4 py-2 bg-gray-500 hover:bg-blue-700 flex items-center text-white rounded focus:outline-none" style="display:none;">
+                        Add to Anki
+                          <img src="anki-icon.png" alt="Anki Logo" class="h-6 w-6 ml-2"/>
+                      </button>
+                </section>
+
+            </div>
+
+    <script src="script.js"></script>
+</html>
