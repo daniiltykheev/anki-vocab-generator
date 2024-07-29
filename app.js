@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const vocabularyRoutes = require("./routes/vocabulary"); // Routes for handling vocabulary operations
 
 app.use(express.json());

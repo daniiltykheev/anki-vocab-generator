@@ -17,7 +17,7 @@ async function createDeck(deckName) {
   }
 }
 
-async function addCardToDeck(deckName, front, back) {
+async function addCardToDeck(deckName, front, back, retryCount = 3) {
   try {
     const result = await axios.post(ANKI_CONNECT_URL, {
       action: "addNote",
@@ -33,14 +33,19 @@ async function addCardToDeck(deckName, front, back) {
           options: {
             allowDuplicate: false,
           },
-          tags: ["anki-vocab-generator"],
+          tags: ["anki-generator"],
         },
       },
     });
     return result.data;
   } catch (error) {
-    console.error("Error adding card:", error);
-    return null;
+    if (retryCount > 0) {
+      console.warn(`Retrying... (${3 - retryCount + 1})`);
+      return addCardToDeck(deckName, front, back, retryCount - 1);
+    } else {
+      console.error("Error adding card:", error);
+      return null;
+    }
   }
 }
 
